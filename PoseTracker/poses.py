@@ -24,22 +24,27 @@ def t_pose(lms):
 
     return 1 / (pointDistance + 1)
 
+# Returns true if left hand is above head.
 def left_hand_up(lms):
     if len(lms) == 0:
         return 0
     
     return lms[15].y < lms[0].y
 
+# Returns true if right hand is above head.
 def right_hand_up(lms):
     if len(lms) == 0:
         return 0
     
     return lms[16].y < lms[0].y
 
+# Returns true if both hands are above head.
 def hands_up(lms):
     return left_hand_up(lms) and right_hand_up(lms)
 
+# Find points by searching MP pose landmarks, or it may be in the git if I remember to upload it.
 def point_overlap(lms,id1,id2):
+    # Get bounding box of human.
     minx = -1
     miny = -1
     maxx = -1
@@ -53,14 +58,14 @@ def point_overlap(lms,id1,id2):
             miny = point.y
         elif point.y > maxy:
             maxy = point.y
-
+    # Use bounding box to understand scale (how far back the human is).
     size = math.sqrt( math.pow( maxx - minx, 2) + math.pow( maxy - miny, 2 ) )
     distance = math.sqrt( math.pow( lms[id1].x - lms[id2].x, 2) + math.pow( lms[id1].y - lms[id2].y, 2) )
 
     return 1 - (distance / size )
 
 #give overlap points for gesture 1 and then gesture 2
-def gesture_points(lms,p1,p2,p3,p4):
+def gesture_points(lms,p1,p2,p3,p4): # WIP: Probably not going to be implemented fully.
     if point_overlap(lms,p1,p2) > 0.95:
         if point_overlap(lms,p3,p4) > 0.95:
             return True
