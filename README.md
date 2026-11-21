@@ -1,12 +1,12 @@
 **Setup**\
 First make an instance of the PoseTracker class (stored in poseTracker.py).\
-After creating the instance call update_image() and pass it a numpy RGB image.(CV2 image format)\
+After creating the instance call update_image() and pass it a numpy RGB image. (CV2 image format)
 
-tracker = PoseTracker()
+tracker = PoseTracker()\
 tracker.update_image(image) #run whenever you get a new image
 
 **Use**\
-After setting the class up you now have access to a multitude of functions.It is recommended that\
+After setting the class up you now have access to a multitude of functions. It is recommended that\
 you call these on a series of images before large motions as they occasionally misfire.
 
 **t_pose()**\
