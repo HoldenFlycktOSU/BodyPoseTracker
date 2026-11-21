@@ -70,3 +70,23 @@ def gesture_points(lms,p1,p2,p3,p4): # WIP: Probably not going to be implemented
         if point_overlap(lms,p3,p4) > 0.95:
             return True
     return False
+
+#scale of 0-1
+def get_x(lms)->float:
+    x_total = 0
+    count = 0
+    for point in lms:
+        x_total += point.x
+        count += 1
+
+    return x_total / count
+
+#scale of 0-1
+def get_y(lms)->float:
+    y_total = 0
+    count = 0
+    for point in lms:
+        y_total += point.y
+        count += 1
+
+    return y_total / count
