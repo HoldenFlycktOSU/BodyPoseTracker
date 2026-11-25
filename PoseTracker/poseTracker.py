@@ -86,6 +86,9 @@ class PoseTracker:
     def get_detection_result(self)->np.ndarray:
         return self._detection_result
 
+    def get_landmarks(self):
+        return self._detection_result
+
     #internal
     def _update_pos(self)->None:
         if not self._pos_updated:
